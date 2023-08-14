@@ -7,20 +7,39 @@ REM get Start time
 set "Starttime=%time%"
 echo Start: %Starttime%
 
-REM Options
-set TargetHost=www.google.com
+REM Target Adress
+set TargetHost=88.99.192.186
+
+REM Number of tracer Hops
+set TracertHops=30
+
+REM Number of Tracer-loops
+set loops=10
 
 REM Number of sended pakets
-set Pakets=1000
+set Pakets=100
 set results=ResultsOfPing.txt
+
+echo pings sending now
 
 REM Ping running
 ping %TargetHost% -n %Pakets% > %results%
 
+REM breakline
+echo ------------------------------------- >> %results%
+
+echo start Traceroute
+
+for /l %%i in (1,1,%loops%) do (
+REM tracert running
+tracert -h %TracertHops% %TargetHost% >> %results%
+
+echo Traceroute test number: %%i
+echo. >> %results%
 REM show results
 type %results%
 
-echo Ping test end
+echo Ping test and Traceroute end
 
 REM get end time
 set "Endtime=%time%"
