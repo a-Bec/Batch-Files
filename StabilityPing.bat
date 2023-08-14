@@ -36,6 +36,8 @@ tracert -h %TracertHops% %TargetHost% >> %results%
 
 echo Traceroute test number: %%i
 echo. >> %results%
+)
+
 REM show results
 type %results%
 
