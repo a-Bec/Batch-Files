@@ -8,7 +8,7 @@ set "Starttime=%time%"
 echo Start: %Starttime%
 
 REM Options
-set TargetHost=88.99.192.186
+set TargetHost=www.google.com
 
 REM Number of sended pakets
 set Pakets=1000
